@@ -1,0 +1,26 @@
+{
+  "name": "russell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csrobinson86/russell.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/csrobinson86/russell/issues"
+  },
+  "homepage": "https://github.com/csrobinson86/russell#readme",
+  "dependencies": {
+    "@openai/agents": "^0.4.4",
+    "dotenv": "^17.2.3",
+    "zod": "^4.3.6"
+  }
+}
