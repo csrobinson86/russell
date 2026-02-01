@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Debate App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-8">The Debate App</h1>
+
+        <!-- Debate Setup -->
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Topic</label>
+                    <select name="topic" class="w-full border rounded p-2">
+                        <option value="trinity">The Trinity</option>
+                        <option value="creation">Creation vs Evolution</option>
+                        <option value="hellfire">Hellfire</option>
+                        <option value="soul">Immortality of the Soul</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Opponent</label>
+                    <select name="opponent" class="w-full border rounded p-2">
+                        <option value="clergy">Clergy</option>
+                        <option value="atheist">Atheist</option>
+                    </select>
+                </div>
+            </div>
+
+            <button
+                hx-post="/debate/start"
+                hx-target="#debate-container"
+                hx-include="[name='topic'], [name='opponent']"
+                hx-indicator="#spinner"
+                hx-disabled-elt="this"
+                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            >
+                Start Debate
+            </button>
+
+            <span id="spinner" class="htmx-indicator block text-center mt-2 text-gray-500">
+                Preparing debate...
+            </span>
+        </div>
+
+        <!-- Debate Rounds Appear Here -->
+        <div id="debate-container"></div>
+    </div>
+
+</body>
+</html>

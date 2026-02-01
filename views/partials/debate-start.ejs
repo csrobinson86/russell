@@ -1,0 +1,43 @@
+<div class="space-y-4">
+    <h2 class="text-xl font-semibold text-center">Debate: <%= topic %></h2>
+
+    <!-- JW Opening -->
+    <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+        <h3 class="font-semibold text-blue-800 mb-2">Jehovah's Witness — Opening Statement</h3>
+        <p class="text-gray-800 whitespace-pre-line"><%= jwOpening %></p>
+        <% if (jwCitations && jwCitations.length > 0) { %>
+            <div class="mt-3 pt-3 border-t border-blue-200">
+                <p class="text-xs font-semibold text-blue-600 mb-1">Sources:</p>
+                <% jwCitations.forEach(function(citation) { %>
+                    <a href="<%= citation.url %>" target="_blank" class="block text-xs text-blue-500 hover:underline truncate">
+                        <%= citation.title || citation.url %>
+                    </a>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Opponent Opening -->
+    <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+        <h3 class="font-semibold text-red-800 mb-2"><%= opponentLabel %> — Opening Statement</h3>
+        <p class="text-gray-800 whitespace-pre-line"><%= opponentOpening %></p>
+    </div>
+
+    <!-- Next Round Button -->
+    <div class="text-center">
+        <button
+            hx-post="/debate/next-round"
+            hx-target="#debate-container"
+            hx-swap="innerHTML"
+            hx-vals='{"debateId": "<%= debateId %>"}'
+            hx-indicator="#round-spinner"
+            hx-disabled-elt="this"
+            class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+        >
+            Next Round
+        </button>
+        <span id="round-spinner" class="htmx-indicator block mt-2 text-gray-500">
+            Both sides are preparing arguments...
+        </span>
+    </div>
+</div>
